@@ -1,1 +1,16 @@
 /*Custom styles*/
+.primary-color{
+    fill: #0275d8;
+}
+
+.home__blob{
+  transition: all 0.3s ease-in-out;
+}
+
+.home__blob:hover{
+    transform: scale(1.3);
+}
+
+.home__blob-img{
+    width: 120px;
+}

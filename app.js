@@ -1,3 +1,9 @@
+/**
+ * File name: app.js
+ * author: Oscar Umana
+ * student ID: 301247086
+ * Date: 2022-09-28
+ */
 //third party dependencies
 let createError = require('http-errors');
 let express = require('express');

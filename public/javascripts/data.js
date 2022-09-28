@@ -1,3 +1,9 @@
+/**
+ * File name: data.js
+ * author: Oscar Umana
+ * student ID: 301247086
+ * Date: 2022-09-28
+ */
 const projects = [
     {
         title: "Web Development Portfolio",

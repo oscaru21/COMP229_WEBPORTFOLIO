@@ -1,3 +1,9 @@
+/**
+ * File name: index.js
+ * author: Oscar Umana
+ * student ID: 301247086
+ * Date: 2022-09-28
+ */
 let express = require('express');
 let data = require('../public/javascripts/data')
 let router = express.Router();

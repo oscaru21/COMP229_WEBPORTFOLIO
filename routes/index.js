@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let data = require('../public/javascripts/data')
+let router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,7 +19,7 @@ router.get('/about', function(req, res, next) {
 
 /* GET Projects page. */
 router.get('/projects', function(req, res, next) {
-  res.render('index', { title: 'Projects' });
+  res.render('index', { title: 'Projects', projects: data.projects });
 });
 
 /* GET Services page. */

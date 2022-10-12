@@ -9,7 +9,7 @@
  * Module dependencies.
  */
 
-var app = require('./app');
+var app = require('./config/app');
 var debug = require('debug')('comp229-webportfolio:server');
 var http = require('http');
 

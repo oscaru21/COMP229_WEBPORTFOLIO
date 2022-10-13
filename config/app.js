@@ -14,6 +14,7 @@ let logger = require('morgan');
 //routes
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
+let contactsRouter = require('../routes/contacts');
 
 let app = express();
 
@@ -44,6 +45,7 @@ mongoDB.once('open', ()=>{
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/contacts', contactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

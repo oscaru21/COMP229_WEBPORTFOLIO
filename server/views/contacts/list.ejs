@@ -1,0 +1,33 @@
+<%- include ../partials/head.ejs %> 
+<%- include ../partials/navbar.ejs %>
+
+<!--Main Section-->
+<section class="min-vh-100">
+  <div class="container">
+  <table class="table table-striped mt-10">
+    <thead>
+      <tr>
+        <% Object.keys(contactList[0]._doc).forEach(key => { %>
+            <% if(key != '_id') { %> 
+              <th scope="col"><%= key %></th>
+            <% }; %> 
+        <% }); %> 
+      </tr>
+    </thead>
+    <tbody>
+        <% contactList.forEach(contact => { %>
+            <tr>
+                <% Object.keys(contact._doc).forEach(key => { %>
+                  <% if(key != '_id') { %>
+                    <td><%= contact._doc[key] %></td>
+                    <% }; %> 
+                <% }); %>
+            </tr>
+        <% }); %> 
+    </tbody>
+  </table>
+</div>
+</section>
+
+<%- include ../partials/footer.ejs %> 
+<%- include ../partials/foot.ejs %>

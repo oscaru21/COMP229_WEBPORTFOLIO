@@ -1,0 +1,31 @@
+<%- include head.ejs %> 
+<%- include navbar.ejs %> 
+<div class="container col-xxl-5 p-4">
+  <!-- Message Area -->
+  <% if(messages.length > 0) {%>
+    <div class="alert alert-danger"><%= messages %></div>
+  <% } %>
+<form method="POST" autocomplete="off">
+    <!-- Username input -->
+    <fieldset class="form-outline mb-4">
+        <label class="form-label" for="username">Username</label>
+      <input type="text" placeholder="Username" name="username" id="username" class="form-control" required autofocus/>
+    </fieldset>
+  
+    <!-- Password input -->
+    <fieldset class="form-outline mb-4">
+        <label class="form-label" for="password">Password</label>
+      <input type="password" placeholder="Password" name="password" id="password" class="form-control" required />
+    </fieldset>
+  
+    <!-- Submit button -->
+    <div class="d-flex flex-direction-row">
+    <button type="submit" class="btn btn-primary btn-block mr-2 flex-grow-1" value="login">Log in</button>
+  </div>
+  
+  </form>
+</div>
+
+
+<%- include footer.ejs %> 
+<%- include foot.ejs %> 

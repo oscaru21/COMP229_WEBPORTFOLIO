@@ -43,9 +43,10 @@ DB.Connect()
 //setup express session
 app.use(
   session({
-    secret: "SomeSecret",
+    secret: "mysupersecret",
     saveUninitialized: false,
     resave: false,
+    cookie: { maxAge: 1_800_000 } // 30 min
   })
 );
 

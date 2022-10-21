@@ -1,3 +1,9 @@
+/**
+ * File name: user.js
+ * author: Oscar Umana
+ * student ID: 301247086
+ * Date: 2022-10-18
+ */
 let mongoose = require("mongoose");
 let passportLocalMongoose = require("passport-local-mongoose");
 

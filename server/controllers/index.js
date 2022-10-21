@@ -1,3 +1,9 @@
+/**
+ * File name: index.js
+ * author: Oscar Umana
+ * student ID: 301247086
+ * Date: 2022-10-18
+ */
 //import test project data
 let data = require('../../public/javascripts/data.js')
 //import third party dependencies

@@ -1,3 +1,9 @@
+/**
+ * File name: contact.js
+ * author: Oscar Umana
+ * student ID: 301247086
+ * Date: 2022-10-12
+ */
 let mongoose = require('mongoose')
 
 //create a contact model

@@ -1,0 +1,34 @@
+<div class="container col-xxl-5 p-4">
+
+<form method="POST" autocomplete="off">
+    <!-- name input -->
+    <fieldset class="form-outline mb-4">
+        <label class="form-label" for="name">Name:</label>
+      <input type="text" name="name" id="name" class="form-control" value=<%= contact.name %> />
+    </fieldset>
+
+    <!-- number input -->
+    <fieldset class="form-outline mb-4">
+        <label class="form-label" for="number">Number:</label>
+      <input type="number" name="number" id="number" class="form-control" value=<%= contact.number %> />
+    </fieldset>
+
+    <!-- email input -->
+    <fieldset class="form-outline mb-4">
+        <label class="form-label" for="email">Email:</label>
+      <input type="email" name="email" id="email" class="form-control" value=<%= contact.email %> />
+    </fieldset>
+  
+    <div class="d-flex flex-direction-row">
+        <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mr-2 flex-grow-1" value="login">Update</button>
+     <!--Cancel button-->
+     <a href="/contacts" class="btn btn-danger">
+        <i class="fas fa-undo"></i>Cancel
+    </a>
+    </div>
+
+   
+  
+  </form>
+</div>

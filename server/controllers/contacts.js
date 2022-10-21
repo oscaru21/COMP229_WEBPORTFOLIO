@@ -6,96 +6,63 @@ let mongoose = require("mongoose");
 let Contact = require("../models/contact");
 
 module.exports.displayContactList = (req, res, next) => {
-  Contact.find((err, contactList) => {
-    console.log(contactList);
+  Contact.find({}, null, {sort: {name: 1}}, (err, contactList) => {
     if (err) {
       return console.error(err);
     } else {
-
-      res.render("contacts/list", {
-        title: "Contacts",
+      res.render("contacts/contacts", {
+        title: "List",
         contactList: contactList,
-        displayName: req.user ? req.user.displayName : "",
       });
     }
   });
 };
 
-module.exports.addpage = (req, res, next) => {
-  res.render("book/add", {
-    title: "Add Book",
-    displayName: req.user ? req.user.displayName : "",
-  });
-};
-
-module.exports.addprocesspage = (req, res, next) => {
-  let newBook = Book({
-    name: req.body.name,
-    author: req.body.author,
-    published: req.body.published,
-    description: req.body.description,
-    price: req.body.price,
-  });
-  Book.create(newBook, (err, Book) => {
-    if (err) {
-      console.log(err);
-      res.end(err);
-    } else {
-      // refresh the book list
-      res.redirect("/book-list");
-    }
-  });
-};
-
-module.exports.displayeditpage = (req, res, next) => {
+module.exports.displayUpdatepage = (req, res, next) => {
   let id = req.params.id; //id of actual object
 
-  Book.findById(id, (err, booktoedit) => {
+  Contact.findById(id, (err, contactToUpdate) => {
     if (err) {
       console.log(err);
       res.end(err);
     } else {
       //show the edit view
-      res.render("book/edit", {
-        title: "Edit Book",
-        book: booktoedit,
-        displayName: req.user ? req.user.displayName : "",
+      res.render("contacts/contacts", {
+        title: "Update",
+        contact: contactToUpdate,
       });
     }
   });
 };
 
-module.exports.processingeditpage = (req, res, next) => {
-  let id = req.params.id; //id of actual object
+module.exports.processingUpdatepage = (req, res, next) => {
+  let id = req.params.id; 
 
-  let updatebook = Book({
+  let updateContact = Contact({
     _id: id,
     name: req.body.name,
-    author: req.body.author,
-    published: req.body.published,
-    description: req.body.description,
-    price: req.body.price,
+    number: req.body.number,
+    email: req.body.email,
   });
-  Book.updateOne({ _id: id }, updatebook, (err) => {
+
+  Contact.updateOne({ _id: id }, updateContact, (err) => {
     if (err) {
       console.log(err);
       res.end(err);
     } else {
-      //refresh the book list
-      res.redirect("/book-list");
+      res.redirect("/contacts");
     }
   });
 };
 
-module.exports.deletepage = (req, res, next) => {
+module.exports.delete = (req, res, next) => {
   let id = req.params.id;
-  Book.remove({ _id: id }, (err) => {
+  Contact.remove({ _id: id }, (err) => {
     if (err) {
       console.log(err);
       res.end(err);
     } else {
-      //refresh book list
-      res.redirect("/book-list");
+      res.redirect("/contacts");
     }
   });
 };

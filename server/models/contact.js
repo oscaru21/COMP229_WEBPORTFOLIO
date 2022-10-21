@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 
 //create a contact model
-let contactModel = mongoose.Schema({
+let contactSchema = mongoose.Schema({
     name: String,
     number: String,
     email: String
@@ -10,4 +10,4 @@ let contactModel = mongoose.Schema({
     collection: 'contacts'
 })
 
-module.exports = mongoose.model('Contact', contactModel)
+module.exports = mongoose.model('Contact', contactSchema)

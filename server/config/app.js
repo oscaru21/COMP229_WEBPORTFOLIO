@@ -11,11 +11,10 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+
 //modules for authentication
 let session = require("express-session");
 let passport = require("passport");
-let passportLocal = require("passport-local");
-let localStratergy = passportLocal.Strategy;
 let flash = require("connect-flash");
 
 //routes
@@ -23,6 +22,7 @@ let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let contactsRouter = require('../routes/contacts');
 
+//create express app instance
 let app = express();
 
 // view engine setup
@@ -37,16 +37,8 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 //database setup
-let mongoose = require('mongoose');
 let DB = require('./db')
-
-mongoose.connect(DB.URI)
-
-let mongoDB = mongoose.connection;
-mongoDB.on('error', console.error.bind(console, 'Connection error: '));
-mongoDB.once('open', ()=>{
-  console.log('Connected to mongoDB...');
-})
+DB.Connect()
 
 //setup express session
 app.use(
@@ -64,6 +56,18 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//expose user data to templates
+app.use(function(req, res, next) {
+  console.log(req.user);
+  if(req.user){
+    res.locals.user = req.user
+  }
+  else{
+    res.locals.user = {}
+  }
+  next();
+});
+
 //passport user configuration
 
 //create usermodel instance
@@ -80,6 +84,7 @@ passport.deserializeUser(User.deserializeUser());
 //create test User
 //User.register({username:"admin", email:"admin@admin.com", displayName: "Oscar"}, 'admin')
 
+//Router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/contacts', contactsRouter);

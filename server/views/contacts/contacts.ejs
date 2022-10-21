@@ -1,0 +1,12 @@
+<%- include ../partials/head.ejs %> 
+<%- include ../partials/navbar.ejs %>
+<!--Main Section-->
+<section class="min-vh-100">
+    <% if (title == 'List'){ %> 
+      <%- include list.ejs %> 
+    <% }else if(title == 'Update'){ %> 
+      <%- include update.ejs %>
+    <% } %> 
+  </section>
+<%- include ../partials/footer.ejs %> 
+<%- include ../partials/foot.ejs %>

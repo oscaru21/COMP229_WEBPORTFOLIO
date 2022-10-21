@@ -1,3 +1,5 @@
+//import test project data
+let data = require('../../public/javascripts/data.js')
 //import third party dependencies
 let passport = require("passport");
 
@@ -6,35 +8,31 @@ let passport = require("passport");
 module.exports.displayHomepage = (req, res, next) => {
   res.render("index", {
     title: "Home",
-    displayName: req.user ? req.user.displayName : "",
   });
 };
 
 module.exports.displayaboutpage = (req, res, next) => {
   res.render("index", {
     title: "About",
-    displayName: req.user ? req.user.displayName : "",
   });
 };
 
 module.exports.displayprojectspage = (req, res, next) => {
   res.render("index", {
-    title: "Products",
-    displayName: req.user ? req.user.displayName : "",
+    title: "Projects",
+    projects: data.projects,
   });
 };
 
 module.exports.displayservicespage = (req, res, next) => {
   res.render("index", {
     title: "Services",
-    displayName: req.user ? req.user.displayName : "",
   });
 };
 
 module.exports.displayContactpage = (req, res, next) => {
   res.render("index", {
     title: "Contact",
-    displayName: req.user ? req.user.displayName : "",
   });
 };
 
@@ -44,7 +42,6 @@ module.exports.displayLoginPage = (req, res, next) => {
     res.render("partials/login", {
       title: "Login",
       messages: req.flash("loginMessage"),
-      displayName: req.user ? req.user.displayName : "",
     });
   } else {
     return res.redirect("/");
@@ -53,8 +50,6 @@ module.exports.displayLoginPage = (req, res, next) => {
 
 //process /login POST requests
 module.exports.processLoginPage = (req, res, next) => {
-  console.log(req.body.username)
-  console.log(req.body.password)
   passport.authenticate("local", (err, user, info) => {
     // server err?
     if (err) {

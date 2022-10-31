@@ -9,10 +9,11 @@ let mongoose = require('mongoose');
 options =
 {
     //"URI": "mongodb://localhost/portfolio"
-    "URI": "mongodb+srv://newuser:NYArAf04sj2zrz4E@cluster0.4p4vbae.mongodb.net/portfolio?retryWrites=true&w=majority"
+    "URI": "mongodb+srv://newuser:NYArAf04sj2zrz4E@cluster0.4p4vbae.mongodb.net/portfolio?retryWrites=true&w=majority",
+    "Secret" : "SomeSecret"
 }
 
-module.exports.Connect = () => {
+Connect = () => {
     mongoose.connect(options.URI)
 
     let mongoDB = mongoose.connection;
@@ -21,3 +22,5 @@ module.exports.Connect = () => {
     console.log('Connected to database...');
     })
 }
+
+module.exports = {options, Connect}

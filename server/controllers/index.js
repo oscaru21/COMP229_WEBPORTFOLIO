@@ -6,8 +6,12 @@
  */
 //import test project data
 let data = require('../../public/javascripts/data.js')
+let DB = require('../config/db')
+
 //import third party dependencies
 let passport = require("passport");
+let jwt = require('jsonwebtoken')
+
 
 
 // serve static pages
@@ -71,6 +75,19 @@ module.exports.processLoginPage = (req, res, next) => {
       if (err) {
         return next(err);
       }
+
+      const payload ={
+        id: user._id,
+        username: user.username,
+        email: user.email
+      }
+
+      const authToken = jwt.sign(payload, DB.options.Secret, {
+        expiresIn: 604800,
+      })
+
+      //res.json({success: true, msg: 'User logged in!', user: payload, token: authToken})
+
       return res.redirect("/contacts");
     });
   })(req, res, next);
